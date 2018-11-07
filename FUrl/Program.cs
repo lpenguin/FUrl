@@ -17,47 +17,6 @@ namespace FUrl
                 async opts => await RunOptionsAndReturnExitCode(opts),
                 errors => Task.FromResult(0)
             );
-//                .WithParsed(RunOptionsAndReturnExitCode)
-//                .WithNotParsed(HandleParseError);
-           
-//            
-//            var assetId = "5"; //args[0];
-//            var version = "xyz"; //args[1];
-//            var assetFileName = "/Users/nikita/Sources/python/maxquant_download/manage.py"; // args[2];
-//            var baseUrl = "http://127.0.0.1:8000/api/assetversions/";
-//            var token = "573e199074c94184a7dc3799b054166af6cd6bae";
-//            var headers = new Dictionary<string, string>
-//            {
-//                {"Authorization", $"Token {token}"},
-//                {"Accept" , "*/*"},
-//            };
-//
-//            var parameters = new Dictionary<string, string>()
-//            {
-//                {"asset", assetId},
-//                {"version", version}
-//            };
-//            using (var fs = File.OpenRead(assetFileName))
-//            {
-//                var files = new Dictionary<string, (string, FileStream)>()
-//                {
-//                    {"file", (Path.GetFileName(assetFileName), fs)}
-//                };
-//                var res = await Upload(baseUrl, headers, parameters, files);
-//                using (StreamReader reader = new StreamReader(res, Encoding.UTF8))
-//                {
-//                    var data = await reader.ReadToEndAsync();
-//                    Console.WriteLine(data);
-//                }
-//
-//                
-//            } 
-           
-        }
-
-        private static void HandleParseError(IEnumerable<Error> errs)
-        {
-//            Console.WriteLine(errs);
         }
 
         private static async Task<int> RunOptionsAndReturnExitCode(Options opts)
