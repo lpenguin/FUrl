@@ -24,7 +24,7 @@ namespace FUrl
         [Option('h', "headers", HelpText = "Headers")]
         public IEnumerable<string> Headers { get; set; }
 
-        private static (string, string) SplitOrThrow(string value, string delimiter = "=")
+        private static (string, string) SplitOrThrow(string value, char delimiter = '=')
         {
             var tokens = value.Split(delimiter);
             if (tokens.Length != 2)
@@ -47,7 +47,7 @@ namespace FUrl
         
         public IEnumerable<(string, string)> HeadersParsed
         {
-            get { return Headers.Select(x => SplitOrThrow(x, ":")); }
+            get { return Headers.Select(x => SplitOrThrow(x, ':')); }
         }
         
 //        public IEnumerable<(string, string)> QueryParamParsed
