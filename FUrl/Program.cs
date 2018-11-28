@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,18 +11,18 @@ namespace FUrl
 {
   class Program
     {
-        static async Task Main(string[] args)
+        static async Task<int> Main(string[] args)
         {
             var result =  Parser.Default.ParseArguments<Options>(args);
-            await result.MapResult(
+            var res = await result.MapResult(
                 async opts => await RunOptionsAndReturnExitCode(opts),
-                errors => Task.FromResult(0)
+                errors => Task.FromResult(1)
             );
+            return res;
         }
 
         private static async Task<int> RunOptionsAndReturnExitCode(Options opts)
         {
-            Console.WriteLine(opts.Method);
             var res = await Upload(ParseOptions(opts));
             using (var reader = new StreamReader(res, Encoding.UTF8))
             {
