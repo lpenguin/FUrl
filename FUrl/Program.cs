@@ -35,6 +35,7 @@ namespace FUrl
         private static HttpRequestMessage ParseOptions(Options options)
         {
             var method = new HttpMethod(options.Method.ToString());
+
             var request = new HttpRequestMessage(method, options.Url);
             
             var formData = new MultipartFormDataContent();
@@ -54,7 +55,7 @@ namespace FUrl
                 }
                 else
                 {
-                    formData.Add(new StringContent(name), value);    
+                    formData.Add(new StringContent(value), name);    
                 }
                 
             }
@@ -66,6 +67,7 @@ namespace FUrl
         {
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.ExpectContinue = false;
                 var response = await client.SendAsync(request);
                 return await response.Content.ReadAsStreamAsync();
             }

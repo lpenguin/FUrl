@@ -10,7 +10,7 @@ namespace FUrl
 // Define a class to receive parsed values
     public enum Method
     {
-        Get, Post, Put, Delete, Patch
+        GET, POST, PUT, DELETE, PATCH
     }
 
     
@@ -38,7 +38,7 @@ namespace FUrl
 //        [Option('q', "query-param", HelpText = "Query params")]
 //        public  IEnumerable<string> QueryParam { get; set; }
 
-        [Option('m', "method", HelpText = "HTTP Method", Default = Method.Get)]
+        [Option('m', "method", HelpText = "HTTP Method", Default = Method.GET)]
         public Method Method { get; set; }
             
 //        [Option('v', "verbose", Default = true,
