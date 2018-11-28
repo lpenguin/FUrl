@@ -35,6 +35,9 @@ namespace FUrl
 
         private static HttpRequestMessage ParseOptions(Options options)
         {
+            Console.WriteLine(options.Method);
+            Console.WriteLine(string.Join(", ", options.HeadersParsed));
+            Console.WriteLine(options.Url);
             var method = new HttpMethod(options.Method.ToString());
 
             var request = new HttpRequestMessage(method, options.Url);
